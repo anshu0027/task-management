@@ -507,7 +507,7 @@ export function Tasks({ data, setData }: TasksProps) {
                   <Label htmlFor="edit-priority">Priority</Label>
                   <Select
                     value={editingTask.priority}
-                    onValueChange={(value) => setEditingTask({ ...editingTask, priority: value })}
+                    onValueChange={(value) => setEditingTask({ ...editingTask, priority: value as "high" | "medium" | "low" })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select priority" />
@@ -525,7 +525,7 @@ export function Tasks({ data, setData }: TasksProps) {
                   <Label htmlFor="edit-status">Status</Label>
                   <Select
                     value={editingTask.status}
-                    onValueChange={(value) => setEditingTask({ ...editingTask, status: value })}
+                    onValueChange={(value) => setEditingTask({ ...editingTask, status: value as "pending" | "in-progress" | "completed" })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select status" />
@@ -570,7 +570,7 @@ export function Tasks({ data, setData }: TasksProps) {
                   <Label htmlFor="edit-recurringFrequency">Frequency</Label>
                   <Select
                     value={editingTask.recurringFrequency}
-                    onValueChange={(value) => setEditingTask({ ...editingTask, recurringFrequency: value })}
+                    onValueChange={(value) => setEditingTask({ ...editingTask, recurringFrequency: value as "none" | "daily" | "weekly" | "monthly" })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select frequency" />
