@@ -168,7 +168,7 @@ export function Tasks({ data, setData }: TasksProps) {
   const handleToggleStatus = (taskId: string) => {
     const updatedTasks = data.tasks.map((task) => {
       if (task.id === taskId) {
-        const newStatus = task.status === "completed" ? "pending" : "completed"
+        const newStatus: "pending" | "in-progress" | "completed" = task.status === "completed" ? "pending" : "completed"
         return { ...task, status: newStatus }
       }
       return task
@@ -255,7 +255,7 @@ export function Tasks({ data, setData }: TasksProps) {
                   <Label htmlFor="priority">Priority</Label>
                   <Select
                     value={newTask.priority}
-                    onValueChange={(value) => setNewTask({ ...newTask, priority: value })}
+                    onValueChange={(value) => setNewTask({ ...newTask, priority: value as "high" | "medium" | "low" })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select priority" />
@@ -271,7 +271,7 @@ export function Tasks({ data, setData }: TasksProps) {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="status">Status</Label>
-                  <Select value={newTask.status} onValueChange={(value) => setNewTask({ ...newTask, status: value })}>
+                  <Select value={newTask.status} onValueChange={(value) => setNewTask({ ...newTask, status: value as "pending" | "in-progress" | "completed" })}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
@@ -315,7 +315,7 @@ export function Tasks({ data, setData }: TasksProps) {
                   <Label htmlFor="recurringFrequency">Frequency</Label>
                   <Select
                     value={newTask.recurringFrequency}
-                    onValueChange={(value) => setNewTask({ ...newTask, recurringFrequency: value })}
+                    onValueChange={(value) => setNewTask({ ...newTask, recurringFrequency: value as "none" | "daily" | "weekly" | "monthly" })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select frequency" />
