@@ -21,7 +21,7 @@ export function Dashboard({ data }: DashboardProps) {
   const netBalance = getNetBalance(totalIncome, totalExpenses)
 
   // Calculate task stats
-  const { completed, inProgress, pending, total } = getTaskStatusCounts(data.tasks)
+  const { completed, total } = getTaskStatusCounts(data.tasks)
   const taskCompletionRate = total > 0 ? Math.round((completed / total) * 100) : 0
 
   // Calculate goal progress
